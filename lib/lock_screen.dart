@@ -39,75 +39,101 @@ class _LockScreenState extends State<LockScreen> {
               child: SizedBox(
                 width: double.maxFinite,
                 height: double.maxFinite,
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 0,
-                    ),
-                    // Image.asset(
-                    //   "assets/logoo.png",
-                    //   width: MediaQuery.of(context).size.width * 0.4,
-                    // ),
-                    LockWidget(
-                      isSelected: isSelected,
-                      onpress: () => setState(() => isSelected = !isSelected),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      margin:
-                          const EdgeInsets.all(20).copyWith(top: 0, bottom: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                            width: 1,
-                            color: Colors.grey.shade300,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                          child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 15),
+                            child: Image.asset(
+                              "assets/logoo.png",
+                              width: MediaQuery.of(context).size.width * 0.4,
+                            ),
                           ),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.shade300.withOpacity(0.3),
-                                blurRadius: 10),
-                          ]),
-                      child: const Text(
-                        "Now you can buy Sovereign Gold Bonds on InstaBIZ! Active Tranche: 16 Dec to 22nd Dec. For more details, visit Invest and Insure.",
-                        style: TextStyle(fontSize: 14),
-                        textAlign: TextAlign.center,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: ColoredBox(
+                              color: grey.withOpacity(0.5),
+                              child: SizedBox(
+                                height: 55,
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                          Image.asset(
+                            "assets/biz.png",
+                            width: 60,
+                          ),
+                        ],
+                      )),
+                      LockWidget(
+                        isSelected: isSelected,
+                        onpress: () => setState(() => isSelected = !isSelected),
                       ),
-                    ),
-                    const Text(
-                      "Product at your fingertips",
-                      style: TextStyle(
-                        color: blue,
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20)
+                            .copyWith(top: 0, bottom: 10),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              width: 1,
+                              color: Colors.grey.shade300,
+                            ),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade300.withOpacity(0.3),
+                                  blurRadius: 10),
+                            ]),
+                        child: const Text(
+                          "Now you can buy Sovereign Gold Bonds on InstaBIZ! Active Tranche: 16 Dec to 22nd Dec. For more details, visit Invest and Insure.",
+                          style: TextStyle(fontSize: 14),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15).copyWith(right: 0),
-                      child: Row(
-                        children: List.generate(
-                          4,
-                          (index) => LockButtons(
-                            name: lockuttons[index].name,
-                            icon: lockuttons[index].image,
+                      const Text(
+                        "Product at your fingertips",
+                        style: TextStyle(
+                          color: blue,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15).copyWith(right: 0),
+                        child: Row(
+                          children: List.generate(
+                            4,
+                            (index) => LockButtons(
+                              name: lockuttons[index].name,
+                              icon: lockuttons[index].image,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.all(15).copyWith(top: 0, right: 0),
-                      child: Row(
-                        children: List.generate(
-                          4,
-                          (index) => LockButtons(
-                            name: lockuttons[index + 4].name,
-                            icon: lockuttons[index + 4].image,
+                      Padding(
+                        padding:
+                            const EdgeInsets.all(15).copyWith(top: 0, right: 0),
+                        child: Row(
+                          children: List.generate(
+                            4,
+                            (index) => LockButtons(
+                              name: lockuttons[index + 4].name,
+                              icon: lockuttons[index + 4].image,
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             )
@@ -146,7 +172,7 @@ class LockButtons extends StatelessWidget {
           children: [
             Image.asset(
               icon,
-              height: 40,
+              height: 45,
             ),
             Text(
               name,
@@ -295,10 +321,7 @@ class _OtpFiledState extends State<OtpFiled> {
     if (newText.isNotEmpty) {
       if (index < 3) {
         FocusScope.of(context).requestFocus(focusNodes[index + 1]);
-      } else {
-        final otpValue =
-            controllers.map((controller) => controller.text).join();
-      }
+      } else {}
     } else {
       if (index > 0) {
         controllers[index].clear();
@@ -327,7 +350,7 @@ class _OtpFiledState extends State<OtpFiled> {
                 if (areAllFieldsFilledWithZero() && widget.isSelected) {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => HomeScreen(),
+                      builder: (context) => const HomeScreen(),
                     ),
                   );
                 }
@@ -362,99 +385,3 @@ class _OtpFiledState extends State<OtpFiled> {
     );
   }
 }
-
-// class MyOtpScreen extends StatefulWidget {
-//   final bool isSelected;
-
-//   const MyOtpScreen({super.key, required this.isSelected});
-
-//   @override
-//   _MyOtpScreenState createState() => _MyOtpScreenState();
-// }
-
-// class _MyOtpScreenState extends State<MyOtpScreen> {
-//   List<TextEditingController> controllers =
-//       List.generate(4, (index) => TextEditingController());
-//   List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
-
-//   @override
-//   void dispose() {
-//     for (var controller in controllers) {
-//       controller.dispose();
-//     }
-//     for (var focusNode in focusNodes) {
-//       focusNode.dispose();
-//     }
-//     super.dispose();
-//   }
-
-  // bool areAllFieldsFilledWithZero() {
-  //   return controllers.every((controller) => controller.text == "0");
-  // }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       child: Row(
-//         children: List.generate(
-//           4,
-//           (index) => Expanded(
-//             child: Padding(
-//               padding: const EdgeInsets.all(5),
-//               child: TextField(
-//                 controller: controllers[index],
-//                 focusNode: focusNodes[index],
-//                 textAlign: TextAlign.center,
-//                 keyboardType: TextInputType.number,
-                // decoration: InputDecoration(
-                //   fillColor: Colors.white,
-                //   filled: true,
-                //   focusedBorder: OutlineInputBorder(
-                //     borderRadius: BorderRadius.circular(12),
-                //     borderSide: BorderSide(
-                //       color: Colors.grey.shade400,
-                //     ),
-                //   ),
-                //   enabledBorder: OutlineInputBorder(
-                //     borderRadius: BorderRadius.circular(12),
-                //     borderSide: BorderSide(
-                //       color: Colors.grey.shade400,
-                //     ),
-                //   ),
-                // ),
-//                 onChanged: (value) {
-//                   if (value.length == 1) {
-//                     // Move focus to the next TextField
-//                     if (index < 3) {
-//                       FocusScope.of(context)
-//                           .requestFocus(focusNodes[index + 1]);
-//                     } else {
-//                       // If it's the last field, unfocus to close the keyboard
-//                       focusNodes[index].unfocus();
-
-//                       // Check if all fields have "0000" and navigate if true
-                      // if (areAllFieldsFilledWithZero() && widget.isSelected) {
-                      //   Navigator.of(context).pushReplacement(
-                      //     MaterialPageRoute(
-                      //       builder: (context) => HomeScreen(),
-                      //     ),
-                      //   );
-                      // }
-//                     }
-//                   }
-//                 },
-//                 onSubmitted: (value) {
-//                   // If the user presses the back button on an empty field,
-//                   // move focus to the previous TextField
-//                   if (value.isEmpty && index > 0) {
-//                     FocusScope.of(context).requestFocus(focusNodes[index - 1]);
-//                   }
-//                 },
-//               ),
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

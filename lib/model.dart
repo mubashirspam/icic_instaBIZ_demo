@@ -1,5 +1,5 @@
-
 import 'package:intl/intl.dart';
+
 class ButtonModel {
   String name;
   String image;
@@ -9,7 +9,7 @@ class ButtonModel {
 
 List<ButtonModel> buttons = [
   ButtonModel(name: "Fund Transfer", image: "assets/1.png"),
-  ButtonModel(name: "Account &\n Deposits", image: "assets/2.png"),
+  ButtonModel(name: "Account & Deposits", image: "assets/2.png"),
   ButtonModel(name: "Offers", image: "assets/3.png"),
   ButtonModel(name: "UPI", image: "assets/4.png"),
   ButtonModel(name: "Bill Payments", image: "assets/5.png"),
@@ -48,26 +48,25 @@ class RecentTrasaction {
 List recentTransactions = <RecentTrasaction>[
   RecentTrasaction(
       amoun: 2067,
-      date:  DateTime(2023, 12, 26, 14, 41, 20),
+      date: DateTime(2023, 12, 26, 14, 41, 20),
       imageLink: "assets/idib.png",
       name: "Swathi",
       referenceId: "108724562874"),
   RecentTrasaction(
-      amoun:10657,
-      date:  DateTime(2023, 12, 23, 14, 41, 20),
+      amoun: 10657,
+      date: DateTime(2023, 12, 23, 14, 41, 20),
       imageLink: "assets/idib.png",
       name: "Swathi",
       referenceId: "183560364509"),
   RecentTrasaction(
       amoun: 157900,
-      date:  DateTime(2023, 12, 20, 14, 41, 20),
-      imageLink:"assets/idib.png",
+      date: DateTime(2023, 12, 20, 14, 41, 20),
+      imageLink: "assets/idib.png",
       name: "Swathi",
       referenceId: "193752097356"),
 ];
- 
 
- String formatDateTime(DateTime dt) {
+String formatDateTime(DateTime dt) {
   // Formatting using intl package
   String formattedDate = DateFormat('dd-MM-yyyy').format(dt);
   return formattedDate;

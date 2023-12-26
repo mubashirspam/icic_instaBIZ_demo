@@ -2,7 +2,7 @@ import 'package:bank/model.dart';
 import 'package:flutter/material.dart';
 
 import 'color.dart';
-import 'transaction_page.dart';
+
 
 class FundTransferScreen extends StatelessWidget {
   const FundTransferScreen({super.key});
@@ -361,7 +361,7 @@ class BankTransfer extends StatelessWidget {
                     Expanded(
                         child: SizedBox(
                       child: ListView(
-                        padding: EdgeInsets.all(0),
+                        padding: const EdgeInsets.all(0),
                         children: List.generate(
                             recentTransactions.length,
                             (index) => RecentTransactioCard(
@@ -394,7 +394,7 @@ class RecentTransactioCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 2),
+      margin: const EdgeInsets.only(bottom: 2),
       padding: const EdgeInsets.symmetric(vertical: 20),
       decoration: const BoxDecoration(color: Colors.white, boxShadow: [
         BoxShadow(color: Colors.grey, blurRadius: 0, offset: Offset(0, 1))
@@ -412,16 +412,16 @@ class RecentTransactioCard extends StatelessWidget {
               children: [
                 Text(
                   data.name,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
                   data.referenceId,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
@@ -445,7 +445,7 @@ class RecentTransactioCard extends StatelessWidget {
                 ),
                 Text(
                   formatDateTime(data.date),
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
@@ -457,10 +457,10 @@ class RecentTransactioCard extends StatelessWidget {
           const SizedBox(width: 10),
           TextButton(
             onPressed: () {},
-            child: const Text("Pay"),
             style: TextButton.styleFrom(
                 backgroundColor: blue.withOpacity(0.7),
                 foregroundColor: Colors.white),
+            child:const  Text("Pay"),
           ),
           const SizedBox(width: 10),
         ],

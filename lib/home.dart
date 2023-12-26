@@ -2,10 +2,13 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:bank/account_details.dart';
 import 'package:bank/color.dart';
 import 'package:bank/transaction_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'account_and_deposit.dart';
 import 'fund_transfer.dart';
 import 'model.dart';
+import 'profile_details.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +18,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void _showAlertDialog(BuildContext context) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: const Text(
+            'You do not have any accounts linked for the given criteria.'),
+        actions: <CupertinoDialogAction>[
+          CupertinoDialogAction(
+            isDefaultAction: true,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
   int _bottomNavIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -134,6 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: List.generate(
                         4,
                         (index) => HomeButtons(
+                              ontap: () => _showAlertDialog(context),
                               name: buttons[index].name,
                               icon: buttons[index].image,
                             )),
@@ -143,6 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: List.generate(
                         4,
                         (index) => HomeButtons(
+                              ontap: () => _showAlertDialog(context),
                               name: buttons[index + 4].name,
                               icon: buttons[index + 4].image,
                             )),
@@ -250,7 +274,11 @@ class HomeButtons extends StatelessWidget {
                 ? () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const FundTransferScreen(),
                     ))
-                : () {},
+                : name == "Account & Deposits"
+                    ? () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const AccountAndDeposit(),
+                        ))
+                    : ontap,
             child: Container(
               width: 70,
               height: 70,
@@ -610,6 +638,13 @@ class DrawerWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ListTile(
+                            onTap: i != 0
+                                ? () {}
+                                : () => Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ProfileDetailsScreen(),
+                                    )),
                             leading: Image.asset(
                               "assets/p$i.png",
                               width: 35,
