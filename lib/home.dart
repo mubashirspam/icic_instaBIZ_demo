@@ -359,7 +359,7 @@ class OfferCard extends StatelessWidget {
                         Expanded(
                             child: SizedBox(
                           child: Text(
-                            "JCSHub Enterprises (OPC) Private Limited",
+                            "JCSHUB ENTERPRISES (OPC) PVT LTD",
                             style: TextStyle(
                               color: Colors.white,
                             ),
@@ -375,7 +375,7 @@ class OfferCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "₹ 5,00,27000.00",
+                          "₹ $balance",
                           style: TextStyle(color: Colors.white, fontSize: 26),
                         ),
                         SizedBox(

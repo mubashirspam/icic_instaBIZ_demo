@@ -47,23 +47,23 @@ class RecentTrasaction {
 
 List recentTransactions = <RecentTrasaction>[
   RecentTrasaction(
-      amoun: 2067,
-      date: DateTime(2023, 12, 26, 14, 41, 20),
+      amoun: 289000.0,
+      date: DateTime(2023, 12, 27, 8, 15, 43),
       imageLink: "assets/idib.png",
-      name: "Swathi",
-      referenceId: "108724562874"),
+      name: "Ifra",
+      referenceId: "916020073062963"),
   RecentTrasaction(
-      amoun: 10657,
-      date: DateTime(2023, 12, 23, 14, 41, 20),
+      amoun:  150000.0,
+      date:  DateTime(2023, 12, 26, 9, 19, 25),
       imageLink: "assets/idib.png",
-      name: "Swathi",
-      referenceId: "183560364509"),
+      name: "Jagatheesh",
+      referenceId: "034617703011"),
   RecentTrasaction(
-      amoun: 157900,
-      date: DateTime(2023, 12, 20, 14, 41, 20),
+      amoun: 32580000.0,
+      date: DateTime(2023, 11, 9, 13, 56, 35),
       imageLink: "assets/idib.png",
-      name: "Swathi",
-      referenceId: "193752097356"),
+      name: "Sunotal",
+      referenceId: "500646448638"),
 ];
 
 String formatDateTime(DateTime dt) {
@@ -77,3 +77,6 @@ String formatDateTimeToNow(DateTime dt) {
   String formattedDate = DateFormat('dd-MMM-yyyy, hh:mma').format(dt);
   return formattedDate;
 }
+
+const balance = "5,31,07972.91";
+ 

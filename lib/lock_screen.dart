@@ -28,13 +28,6 @@ class _LockScreenState extends State<LockScreen> {
                 height: 200,
               ),
             ),
-            const Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-                padding: EdgeInsets.only(top: 40, right: 20),
-                child: Text("App Version 11.3"),
-              ),
-            ),
             SafeArea(
               child: SizedBox(
                 width: double.maxFinite,
@@ -42,8 +35,17 @@ class _LockScreenState extends State<LockScreen> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("App Version 11.3"),
+                          SizedBox(
+                            width: 20,
+                          )
+                        ],
+                      ),
                       const SizedBox(
-                        height: 15,
+                        height: 10,
                       ),
                       SizedBox(
                           child: Row(
@@ -61,6 +63,7 @@ class _LockScreenState extends State<LockScreen> {
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: ColoredBox(
                               color: grey.withOpacity(0.5),
+                              // ignore: prefer_const_constructors
                               child: SizedBox(
                                 height: 55,
                                 width: 1,
@@ -77,28 +80,28 @@ class _LockScreenState extends State<LockScreen> {
                         isSelected: isSelected,
                         onpress: () => setState(() => isSelected = !isSelected),
                       ),
-                      Container(
-                        padding: const EdgeInsets.all(20),
-                        margin: const EdgeInsets.all(20)
-                            .copyWith(top: 0, bottom: 10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
-                              width: 1,
-                              color: Colors.grey.shade300,
-                            ),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.shade300.withOpacity(0.3),
-                                  blurRadius: 10),
-                            ]),
-                        child: const Text(
-                          "Now you can buy Sovereign Gold Bonds on InstaBIZ! Active Tranche: 16 Dec to 22nd Dec. For more details, visit Invest and Insure.",
-                          style: TextStyle(fontSize: 14),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
+                      // Container(
+                      //   padding: const EdgeInsets.all(20),
+                      //   margin: const EdgeInsets.all(20)
+                      //       .copyWith(top: 0, bottom: 10),
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(8),
+                      //       border: Border.all(
+                      //         width: 1,
+                      //         color: Colors.grey.shade300,
+                      //       ),
+                      //       color: Colors.white,
+                      //       boxShadow: [
+                      //         BoxShadow(
+                      //             color: Colors.grey.shade300.withOpacity(0.3),
+                      //             blurRadius: 10),
+                      //       ]),
+                      //   child: const Text(
+                      //     "Now you can buy Sovereign Gold Bonds on InstaBIZ! Active Tranche: 16 Dec to 22nd Dec. For more details, visit Invest and Insure.",
+                      //     style: TextStyle(fontSize: 14),
+                      //     textAlign: TextAlign.center,
+                      //   ),
+                      // ),
                       const Text(
                         "Product at your fingertips",
                         style: TextStyle(
@@ -223,12 +226,20 @@ class LockWidget extends StatelessWidget {
             isSelected: isSelected,
           ),
           const SizedBox(height: 5),
-          const Text(
-            "Login with Fingerprint ID/Face ID",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.normal,
-            ),
+          const Row(
+            children: [
+              Icon(
+                Icons.fingerprint,
+                color: orage,
+              ),
+              Text(
+                "Login with Fingerprint ID/Face ID",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 15),
           const Text(
@@ -240,7 +251,7 @@ class LockWidget extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -255,9 +266,10 @@ class LockWidget extends StatelessWidget {
                   size: 30,
                 ),
               ),
+              const SizedBox(width: 15),
               Expanded(
                 child: RichText(
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.start,
                   text: const TextSpan(
                     text: 'I have read, understood & accepted the ',
                     style: TextStyle(
@@ -343,6 +355,7 @@ class _OtpFiledState extends State<OtpFiled> {
           child: Padding(
             padding: const EdgeInsets.all(5),
             child: TextFormField(
+              textInputAction: TextInputAction.next,
               controller: controllers[index],
               onChanged: (newText) {
                 _onTextChanged(index, newText);

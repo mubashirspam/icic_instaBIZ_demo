@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 import 'color.dart';
 import 'fund_transfer.dart';
+import 'model.dart';
 
 class TransactionPage extends StatefulWidget {
   const TransactionPage({super.key});
@@ -105,7 +106,7 @@ class _TransactionPageState extends State<TransactionPage> {
                           ),
                         ),
                         Text(
-                          "₹5,00,27000.00",
+                          "₹$balance",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -454,21 +455,25 @@ class TransactionList extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(0)),
                     child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 20),
                       title: Text(
                         formatDate(transactions[index].transactionDate),
                         style: const TextStyle(color: blue, fontSize: 18),
                       ),
                       subtitle: Text(
+                        maxLines: 2,
                         transactions[index].referenceId,
                         style: const TextStyle(color: grey),
                       ),
+                      dense: false,
                       trailing: Text(
-                        transactions[index].debitCredit == "Debit"
+                        transactions[index].debitCredit == "Credit"
                             ? "₹${transactions[index].transactionAmount} Cr"
                             : "₹${transactions[index].transactionAmount} Dr",
                         style: TextStyle(
                             fontSize: 20,
-                            color: transactions[index].debitCredit == "Debit"
+                            color: transactions[index].debitCredit == "Credit"
                                 ? Colors.green
                                 : Colors.red),
                       ),
@@ -508,94 +513,113 @@ String formatDate(DateTime date) {
 List<Transaction> transactions = [
   Transaction(
     debitCredit: "Credit",
-    referenceId: "MMT/IMPS/315222468376/JCSHUB/SWATHI/IDIB000G113",
-    transactionAmount: 2067,
-    transactionDate: DateTime(2023, 12, 26, 14, 41, 20),
+    referenceId: "JAGADEESH-JCS-FUNDSUPPORT",
+    transactionAmount: 53100000,
+    transactionDate: DateTime(2023, 12, 28, 8, 15, 43),
   ),
   Transaction(
-    debitCredit: "Credit",
-    referenceId: "MMT/IMPS/315222468376/JCSHUB/SWATHI/IDIB000G113",
-    transactionAmount: 10657,
-    transactionDate: DateTime(2023, 12, 23, 14, 41, 20),
-  ),
-  Transaction(
-    debitCredit: "Credit",
-    referenceId: "MMT/IMPS/315222468376/JCSHUB/SWATHI/IDIB000G113",
-    transactionAmount: 157900,
-    transactionDate: DateTime(2023, 12, 20, 14, 41, 20),
+    debitCredit: "Debit",
+    referenceId: "CREDITFUNDSBACKTOJAGADEESH",
+    transactionAmount: 53100000,
+    transactionDate: DateTime(2023, 12, 27, 9, 19, 25),
   ),
   Transaction(
     debitCredit: "Debit",
     referenceId:
+        "Refund-NEFT-AXOIC33549609278-B J INFRA--916020073062963-UTIB0002763",
+    transactionAmount: 289000.0,
+    transactionDate: DateTime(2023, 12, 27, 8, 15, 43),
+  ),
+  Transaction(
+    debitCredit: "Debit",
+    referenceId: "IMPS Chg Nov-23+GST",
+    transactionAmount: 128.16,
+    transactionDate: DateTime(2023, 12, 26, 9, 19, 25),
+  ),
+  Transaction(
+    debitCredit: "Credit",
+    referenceId: "NEFT-AXOIC33549608972-B J INFRA--916020073062963-UTIB0002763",
+    transactionAmount: 618800.0,
+    transactionDate: DateTime(2023, 12, 24, 9, 19, 25),
+  ),
+  Transaction(
+    debitCredit: "Credit",
+    referenceId: "MMT/IMPS/315222468376/JCSHUB/SWATHI/IDIB000G113",
+    transactionAmount: 157900.0,
+    transactionDate: DateTime(2023, 12, 20, 16, 15, 43),
+  ),
+  Transaction(
+    debitCredit: "Credit",
+    referenceId:
         "BIL/INFT/ICI20686586/DIGITALPROJECTINVOICE/ JAGADEESH CHALLA-1673316893789",
-    transactionAmount: 32905000.00,
-    transactionDate: DateTime(2023, 12, 16, 14, 41, 20),
+    transactionAmount: 33324041.19,
+    transactionDate: DateTime(2023, 12, 16, 15, 7, 50),
   ),
   Transaction(
-    debitCredit: "Credit",
+    debitCredit: "Debit",
     referenceId: "INF/INFT/034617703011/Jagadeesh",
-    transactionAmount: 150000,
-    transactionDate: DateTime(2023, 12, 7, 14, 41, 20),
+    transactionAmount: 150000.0,
+    transactionDate: DateTime(2023, 12, 7, 17, 38, 49),
   ),
   Transaction(
-    debitCredit: "Credit",
-    referenceId: "IMPS Chg Mar-23+GST",
+    debitCredit: "Debit",
+    referenceId: "IMPS Chg Oct-23+GST",
     transactionAmount: 62.69,
     transactionDate: DateTime(2023, 12, 4, 14, 41, 20),
   ),
   Transaction(
-    debitCredit: "Debit",
+    debitCredit: "Credit",
     referenceId:
         "NEFT-SBIN123334774145-ITDTAX REFUND 2023-24 AAECJ2260N-/ATTN//INB-00000033273316893-SBIN0000TBU",
-    transactionAmount: 158570,
-    transactionDate: DateTime(2023, 11, 30, 14, 41, 20),
+    transactionAmount: 158570.0,
+    transactionDate: DateTime(2023, 11, 30, 15, 3, 59),
   ),
   Transaction(
-    debitCredit: "Credit",
+    debitCredit: "Debit",
     referenceId: "NMQAB Chg Sep-23+GST",
     transactionAmount: 0.01,
-    transactionDate: DateTime(2023, 11, 16, 14, 41, 20),
+    transactionDate: DateTime(2023, 11, 16, 23, 42, 54),
   ),
   Transaction(
-    debitCredit: "Credit",
+    debitCredit: "Debit",
     referenceId: "NMQAB Chg Sep-23+GST",
-    transactionAmount: 519.11,
-    transactionDate: DateTime(2023, 11, 15, 14, 41, 20),
+    transactionAmount: 519.12,
+    transactionDate: DateTime(2023, 11, 15, 15, 8, 32),
   ),
   Transaction(
-    debitCredit: "Credit",
+    debitCredit: "Debit",
     referenceId: "Dbt card Chg Sep-23+GST",
-    transactionAmount: 295,
-    transactionDate: DateTime(2023, 11, 9, 14, 41, 20),
+    transactionAmount: 295.0,
+    transactionDate: DateTime(2023, 11, 9, 18, 21, 13),
   ),
   Transaction(
-    debitCredit: "Credit",
+    debitCredit: "Debit",
     referenceId: "Mob alrt Chg Sep-23+GST",
     transactionAmount: 29.5,
-    transactionDate: DateTime(2023, 11, 9, 14, 41, 20),
+    transactionDate: DateTime(2023, 11, 9, 16, 47, 5),
   ),
   Transaction(
-    debitCredit: "Credit",
+    debitCredit: "Debit",
     referenceId: "RTGS-500646448638/SUNOTAL-INVESTMENT",
-    transactionAmount: 32580000,
-    transactionDate: DateTime(2023, 11, 9, 14, 41, 20),
-  ),
-  Transaction(
-    debitCredit: "Debit",
-    referenceId: "NEFT-UTIB0002763-AFFLUENT-JCSHUBINVOICE",
-    transactionAmount: 186000,
-    transactionDate: DateTime(2023, 11, 4, 14, 41, 20),
-  ),
-  Transaction(
-    debitCredit: "Debit",
-    referenceId: "NEFTAXOIC33085825158-JINFRA-91602007306296",
-    transactionAmount: 20000,
-    transactionDate: DateTime(2023, 11, 4, 14, 41, 20),
+    transactionAmount: 32580000.0,
+    transactionDate: DateTime(2023, 11, 9, 13, 56, 35),
   ),
   Transaction(
     debitCredit: "Credit",
+    referenceId: "NEFT-UTIB0002763-AFFLUENT-JCSHUBINVOICE",
+    transactionAmount: 186000.0,
+    transactionDate: DateTime(2023, 11, 4, 18, 40, 45),
+  ),
+  Transaction(
+    debitCredit: "Credit",
+    referenceId: "NEFTAXOIC33085825158-JINFRA-91602007306296",
+    transactionAmount: 20000.0,
+    transactionDate: DateTime(2023, 11, 4, 18, 36, 49),
+  ),
+  Transaction(
+    debitCredit: "Debit",
     referenceId: "INF/NEFT/034249729871/UTIB0004400/BJInfraVJA",
-    transactionAmount: 17006,
-    transactionDate: DateTime(2023, 11, 4, 14, 41, 20),
+    transactionAmount: 17006.0,
+    transactionDate: DateTime(2023, 11, 4, 16, 8, 59),
   ),
 ];

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'color.dart';
+import 'model.dart';
 
 class AccountDetailsPage extends StatefulWidget {
   const AccountDetailsPage({super.key});
@@ -122,7 +123,7 @@ class _AccountDetailsPageState extends State<AccountDetailsPage> {
                           ),
                         ),
                         Text(
-                          "₹5,00,27000.00",
+                          "₹$balance",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -154,7 +155,7 @@ class _AccountDetailsPageState extends State<AccountDetailsPage> {
                           ),
                         ),
                         Text(
-                          "₹5,00,27000.00",
+                          "₹$balance",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
